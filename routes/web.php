@@ -14,3 +14,8 @@
 Route::any('{all}', function () {
     return view('index');
 })-> where(['all'=>'.*']);
+
+Route::resource('students', 'StudentsController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
