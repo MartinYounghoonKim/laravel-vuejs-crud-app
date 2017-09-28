@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test','Test@show');
+Route::any('{all}', function () {
+    return view('index');
+})-> where(['all'=>'.*']);
