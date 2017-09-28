@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'app',
   data () {
@@ -14,6 +16,17 @@ export default {
       locationDefault: '$router',
       locationMove: '',
       hasLocationHistory: false
+    }
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    getData(){
+      axios.get('/api/students')
+      .then( res => {
+        console.log(res);
+      })
     }
   }
 }
