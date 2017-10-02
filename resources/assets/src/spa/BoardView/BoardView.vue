@@ -8,6 +8,7 @@
 				<th>Name</th>
 				<th>User BirthDay</th>
 				<th>Email</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -71,8 +72,8 @@ body {
 	line-height: 1.4em;
 	background: #f5f5f5;
 	color: #4d4d4d;
-	min-width: 230px;
-	max-width: 550px;
+	min-width: 500px;
+	max-width: 800px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
