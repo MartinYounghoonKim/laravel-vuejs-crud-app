@@ -14,10 +14,18 @@ const getters = {
 }
 
 const actions = {
-    getContentsData ({commit}, payload){
+    getContentsData ( {commit} ){
         getApi.get('/students')
         .then( res=> {
             commit('setContentsData', res.data.students );
+        })
+    },
+    deleteContent ( {commit}, payload){
+        const targetId = payload.targetId;
+
+        getApi.delete(`/students/${targetId}`)
+        .then( res=> {
+            commit('deleteContent', targetId );
         })
     }
 }
@@ -25,6 +33,11 @@ const actions = {
 const mutations = {
     setContentsData (state, payload){
         state.students = payload;
+    },
+    deleteContent( state, targetId ){
+        const targetIndex = state.students.findIndex (v => v.id === targetId);
+        
+        state.students.splice(targetIndex, 1);
     }
 }
 
