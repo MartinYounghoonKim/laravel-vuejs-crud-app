@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import BoardView from '../spa/BoardView/AppContainer';
+import BoardWrite from '../spa/BoardWrite/AppContainer';
+
 Vue.use(Router);
 
 export default new Router({
@@ -12,7 +14,7 @@ export default new Router({
     component: BoardView
   },{
     path: '/write',
-    name: 'BoardView',
-    component: BoardView
+    name: 'BoardWrite',
+    component: BoardWrite
   }]
 })
