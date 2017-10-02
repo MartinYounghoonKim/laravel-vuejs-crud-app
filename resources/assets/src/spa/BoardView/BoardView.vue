@@ -1,19 +1,44 @@
 <template>
-<div id="app">
-	<div class="todoapp">
-		{{text}}
-	</div>
+<div class="">
+	<table class="table table-striped">
+		<caption></caption>
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>Name</th>
+				<th>User BirthDay</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+				<board-content
+					v-for="content in Contents"
+					:content="content"
+					:key="content.key"
+				>
+				</board-content>
+		</tbody>
+	</table>
 </div>
 </template>
 
 <script>
+import BoardContent from './components/BoardContent';
+import { mapGetters, mapActions } from 'vuex';
+import getApi from '../../api/api_core.js';
 
 export default {
-  name: 'main',
-  data () {
-    return {
-				text: "메인"
-    }
+	name: 'main',
+  computed: {
+	  ...mapGetters({
+			Contents: 'getContentsData'
+		})
+	},
+	beforeMount () {
+		this.$store.dispatch('getContentsData');
+	},
+	components: {
+		BoardContent
 	}
 }
 </script>
@@ -63,5 +88,12 @@ input[type="checkbox"] {
 label{
 	margin:0;
 	padding:0;
+}
+table{
+	thead{
+		th{
+			text-align:center;
+		}
+	}
 }
 </style>

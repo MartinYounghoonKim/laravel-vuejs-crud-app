@@ -1,34 +1,13 @@
 <template>
 <div id="app">
-	앱
+	<h1>CRUD with Laravel &amp; Vuejs</h1>
   <router-view></router-view>
 </div>
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
-  name: 'app',
-  data () {
-    return {
-      currentLocation: window.location.pathname,
-      locationDefault: '$router',
-      locationMove: '',
-      hasLocationHistory: false
-    }
-  },
-  mounted() {
-    this.getData();
-  },
-  methods: {
-    getData(){
-      axios.get('/api/students')
-      .then( res => {
-        console.log(res);
-      })
-    }
-  }
+  name: 'app'
 }
 </script>
 
