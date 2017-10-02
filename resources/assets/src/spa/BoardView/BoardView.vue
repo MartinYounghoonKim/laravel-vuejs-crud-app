@@ -16,6 +16,7 @@
 					v-for="content in Contents"
 					:content="content"
 					:key="content.key"
+					@deleteContent="deleteContent"
 				>
 				</board-content>
 		</tbody>
@@ -37,6 +38,11 @@ export default {
 	},
 	beforeMount () {
 		this.$store.dispatch('getContentsData');
+	},
+	methods: {
+		deleteContent (targetId) {
+			this.$store.dispatch('deleteContent', targetId);
+		}
 	},
 	components: {
 		BoardContent
