@@ -4,47 +4,47 @@ import Vuex from 'vuex';
 import getApi from '../../api/api_core.js';
 
 const state = {
-    students: []
+  students: []
 }
 
 const getters = {
-    getContentsData (state) {
-        return state.students;
-    }
+  getContentsData (state) {
+    return state.students;
+  }
 }
 
 const actions = {
-    getContentsData ( {commit} ){
-        getApi.get('/students')
-        .then( res=> {
-            commit('setContentsData', res.data.students );
-        })
-    },
-    deleteContent ( {commit}, payload){
-        const targetId = payload.targetId;
+  getContentsData ( {commit} ){
+    getApi.get('/students')
+    .then( res=> {
+      commit('setContentsData', res.data.students );
+    })
+  },
+  deleteContent ( {commit}, payload){
+    const targetId = payload.targetId;
 
-        getApi.delete(`/students/${targetId}`)
-        .then( res=> {
-            commit('deleteContent', targetId );
-        })
-    }
+    getApi.delete(`/students/${targetId}`)
+    .then( res=> {
+      commit('deleteContent', targetId );
+    })
+  }
 }
 
 const mutations = {
-    setContentsData (state, payload){
-        state.students = payload;
-    },
-    deleteContent( state, targetId ){
-        const targetIndex = state.students.findIndex (v => v.id === targetId);
-        
-        state.students.splice(targetIndex, 1);
-    }
+  setContentsData (state, payload){
+    state.students = payload;
+  },
+  deleteContent( state, targetId ){
+    const targetIndex = state.students.findIndex (v => v.id === targetId);
+
+    state.students.splice(targetIndex, 1);
+  }
 }
 
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
+  state,
+  getters,
+  actions,
+  mutations
 }

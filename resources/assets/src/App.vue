@@ -1,13 +1,18 @@
 <template>
 <div id="app">
-	<h1>CRUD with Laravel &amp; Vuejs</h1>
+  <app-header></app-header>
   <router-view></router-view>
 </div>
 </template>
 
 <script>
+import AppHeader from './common/AppHeader';
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    AppHeader
+  }
 }
 </script>
 
