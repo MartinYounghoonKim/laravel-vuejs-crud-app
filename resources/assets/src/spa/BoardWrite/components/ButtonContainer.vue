@@ -3,6 +3,7 @@
   <button 
     type="button" 
     class="btn btn-primary"
+    @click="completedBoard"
   >Post</button>
   <button 
     type="button" 
@@ -12,7 +13,12 @@
 </template>
 <script>
 export default {
-  name: 'button-wrap'
+  name: 'button-wrap',
+  methods: {
+    completedBoard () {
+      this.$emit('completedBoard');
+    }
+  }
 }
 </script>
 <style lang="scss" scope>

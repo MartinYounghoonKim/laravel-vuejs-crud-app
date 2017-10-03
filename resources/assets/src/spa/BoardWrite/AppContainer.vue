@@ -1,9 +1,17 @@
 <template>
 <div>
-  <name-form></name-form>
-  <birthday-form></birthday-form>
-  <email-form></email-form>
-  <button-container></button-container>
+  <name-form
+    @writeUserName="writeUserName"
+  ></name-form>
+  <birthday-form
+    @writeUserBirthday="writeUserBirthday"
+  ></birthday-form>
+  <email-form
+    @writeUserEmail="writeUserEmail"
+  ></email-form>
+  <button-container
+    @completedBoard="completedBoard"
+  ></button-container>
 </div>
 
 </template>
@@ -15,9 +23,18 @@ import NameForm from './components/NameForm';
 
 export default {
   name: 'board-write',
-  data (){
-    return{
-      editing: false
+  methods: {
+    writeUserName(userName){
+      this.$store.dispatch('writeUserName', { userName });
+    },
+    writeUserBirthday(userBirthday){
+      this.$store.dispatch('writeUserBirthday', { userBirthday });
+    },
+    writeUserEmail(userEmail){
+      this.$store.dispatch('writeUserEmail', { userEmail });
+    },
+    completedBoard () {
+      console.log(1);
     }
   },
   components: {

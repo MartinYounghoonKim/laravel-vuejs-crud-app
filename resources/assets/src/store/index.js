@@ -7,12 +7,14 @@ import Vuex from 'vuex';
 
 
 import BoardView from './module/BoardView.js';
+import BoardWrite from './module/BoardWrite.js';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     modules: {
-        BoardView
+        BoardView,
+        BoardWrite
     }
 });
 
