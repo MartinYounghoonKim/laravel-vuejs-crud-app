@@ -3,7 +3,7 @@
   <button 
     type="button" 
     class="btn btn-primary"
-    @click="completedBoard"
+    @click="completedWrite"
   >Post</button>
   <button 
     type="button" 
@@ -15,8 +15,8 @@
 export default {
   name: 'button-wrap',
   methods: {
-    completedBoard () {
-      this.$emit('completedBoard');
+    completedWrite () {
+      this.$emit('completedWrite');
     }
   }
 }

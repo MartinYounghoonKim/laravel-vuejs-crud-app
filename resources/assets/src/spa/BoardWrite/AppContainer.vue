@@ -10,7 +10,7 @@
     @writeUserEmail="writeUserEmail"
   ></email-form>
   <button-container
-    @completedBoard="completedBoard"
+    @completedWrite="completedWrite"
   ></button-container>
 </div>
 
@@ -33,8 +33,8 @@ export default {
     writeUserEmail(userEmail){
       this.$store.dispatch('writeUserEmail', { userEmail });
     },
-    completedBoard () {
-      console.log(1);
+    completedWrite () {
+      this.$store.dispatch('completedWrite');
     }
   },
   components: {

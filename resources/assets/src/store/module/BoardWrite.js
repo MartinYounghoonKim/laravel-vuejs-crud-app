@@ -1,11 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import router from '../../router';
+
+
+import getApi from '../../api/api_core.js';
+
 const state = {
   editing: false,
   email: null,
   name: null,
-  email: null
+  birthday: null
 }
 
 const actions = {
@@ -24,8 +29,28 @@ const actions = {
 
     commit('writeUserEmail', userEmail);
   },
-  postBoard () {
+  completedWrite ({commit}) {
+    const {
+      birthday,
+      email,
+      name
+    } = state;
 
+    getApi.post('/students', {
+      birthday,
+      email,
+      name
+    })
+    .then( res=>{
+      if(res.status === 201) {
+
+        //Success create board data
+        alert("Success create your data.");
+        router.push('/');
+        //this.$router.push('/');
+      }
+      //commit('completedWrite');
+    });
   }
 }
 
@@ -34,12 +59,13 @@ const mutations = {
     state.name = userName;
   },
   writeUserBirthday (state, userBirthday) {
-    console.log("userBirthday : " + userBirthday);
-    state.email = userBirthday;
+    state.birthday = userBirthday;
   },
   writeUserEmail (state, userEmail) {
-    console.log("userEmail : " + userEmail);
     state.email = userEmail;
+  },
+  completedWrite (state) {
+    console.log(state)
   }
 }
 
