@@ -1,55 +1,61 @@
 <template>
-<div class="">
-	<table class="table table-striped">
-		<caption></caption>
-		<thead>
-			<tr>
-				<th>User Id</th>
-				<th>Name</th>
-				<th>User BirthDay</th>
-				<th>Email</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-				<board-content
-					v-for="content in Contents"
-					:content="content"
-					:key="content.key"
-					@deleteContent="deleteContent"
-				>
-				</board-content>
-		</tbody>
-	</table>
-</div>
+<div class="view-wrapper">
+  <div class="view-contents">
+    <dl>
+      <dt>Name</dt>
+      <dd>{{ student[0].name }}</dd>
+    </dl>
+    <dl>
+      <dt>Email</dt>
+      <dd>{{ student[0].email }}</dd>
+    </dl>
+    <dl>
+      <dt>Birth Date</dt>
+      <dd>{{ student[0].birth_date }}</dd>
+    </dl>
+  </div>
+  <button-container></button-container>
+</div>  
 </template>
 
 <script>
-import BoardContent from './components/BoardContent';
-import { mapGetters, mapActions } from 'vuex';
-import getApi from '../../api/api_core.js';
+import ButtonContainer from './components/ButtonContainer';
+import { mapGetters } from 'vuex';
 
 export default {
-	name: 'board-view',
+  name: 'board-view',
   computed: {
-	  ...mapGetters({
-			Contents: 'getContentsData'
-		})
-	},
-	beforeMount () {
-		this.$store.dispatch('getContentsData');
-	},
-	methods: {
-		deleteContent (targetId) {
-			this.$store.dispatch('deleteContent', targetId);
-		}
-	},
-	components: {
-		BoardContent
-	}
+    ...mapGetters({
+      student: 'getStudentData'
+    })
+  },
+  methods: {
+    
+  },
+  components: {
+    ButtonContainer
+  }
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.view-wrapper{
+  text-align:left;
+  margin-top:20px;
+  .view-contents{
+    margin-bottom:20px;
+    padding:20px 40px;
+    border:3px solid #ececec;
+  }
+  dl{
+    margin-bottom:15px;
+    dt{
+      margin-bottom:10px;
+      font-weight:bold;
+    }
+    dd{
+      margin:0;
+    }
+  }
+}
 </style>
