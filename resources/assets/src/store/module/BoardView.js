@@ -4,47 +4,32 @@ import Vuex from 'vuex';
 import getApi from '../../api/api_core.js';
 
 const state = {
-  students: []
+  student: {}
 }
 
 const getters = {
-  getContentsData (state) {
-    return state.students;
+  getStudentData (state) {
+    return state.student;
   }
 }
-
 const actions = {
-  getContentsData ( {commit} ){
-    getApi.get('/students')
-    .then( res=> {
-      commit('setContentsData', res.data.students );
-    })
-  },
-  deleteContent ( {commit}, payload){
-    const targetId = payload.targetId;
-
-    getApi.delete(`/students/${targetId}`)
-    .then( res=> {
-      commit('deleteContent', targetId );
+  getStudentData ({ commit }, targetId) {
+    getApi.get(`/students/${targetId}`)
+    .then( res => {
+      commit('setStudentData', res.data);
     })
   }
 }
 
 const mutations = {
-  setContentsData (state, payload){
-    state.students = payload;
-  },
-  deleteContent( state, targetId ){
-    const targetIndex = state.students.findIndex (v => v.id === targetId);
-
-    state.students.splice(targetIndex, 1);
+  setStudentData (state, payload) {
+    state.student = payload;
   }
 }
 
-
 export default {
   state,
-  getters,
   actions,
-  mutations
+  getters,
+  mutations  
 }

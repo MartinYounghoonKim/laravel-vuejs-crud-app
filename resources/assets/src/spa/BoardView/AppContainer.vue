@@ -3,15 +3,15 @@
   <div class="view-contents">
     <dl>
       <dt>Name</dt>
-      <dd>{{ student[0].name }}</dd>
+      <dd>{{ student.name }}</dd>
     </dl>
     <dl>
       <dt>Email</dt>
-      <dd>{{ student[0].email }}</dd>
+      <dd>{{ student.email }}</dd>
     </dl>
     <dl>
       <dt>Birth Date</dt>
-      <dd>{{ student[0].birth_date }}</dd>
+      <dd>{{ student.birth_date }}</dd>
     </dl>
   </div>
   <button-container></button-container>
@@ -20,7 +20,7 @@
 
 <script>
 import ButtonContainer from './components/ButtonContainer';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'board-view',
@@ -29,8 +29,12 @@ export default {
       student: 'getStudentData'
     })
   },
+  beforeMount() {
+    const targetId = this.$route.params.id;
+
+    this.$store.dispatch('getStudentData', targetId);
+  },
   methods: {
-    
   },
   components: {
     ButtonContainer
