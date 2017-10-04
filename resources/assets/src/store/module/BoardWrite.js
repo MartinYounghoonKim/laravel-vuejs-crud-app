@@ -3,7 +3,6 @@ import Vuex from 'vuex';
 
 import router from '../../router';
 
-
 import getApi from '../../api/api_core.js';
 
 const state = {
@@ -47,9 +46,7 @@ const actions = {
         //Success create board data
         alert("Success create your data.");
         router.push('/');
-        //this.$router.push('/');
       }
-      //commit('completedWrite');
     });
   }
 }
@@ -63,9 +60,6 @@ const mutations = {
   },
   writeUserEmail (state, userEmail) {
     state.email = userEmail;
-  },
-  completedWrite (state) {
-    console.log(state)
   }
 }
 
