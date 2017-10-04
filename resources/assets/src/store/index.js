@@ -6,21 +6,16 @@ import Vuex from 'vuex';
 // import actions from './actions.js';
 
 
-import BoardView from './module/BoardView.js';
+import BoardList from './module/BoardList.js';
 import BoardWrite from './module/BoardWrite.js';
+import BoardView from './module/BoardView.js';
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     modules: {
-        BoardView,
-        BoardWrite
+        BoardList,
+        BoardWrite,
+        BoardView
     }
 });
-
-// export const store = new Vuex.Store({
-//     state,
-//     getters,
-//     mutations,
-//     actions
-// });
