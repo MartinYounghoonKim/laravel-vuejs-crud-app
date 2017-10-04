@@ -12,9 +12,9 @@
       class="btn btn-danger"
     >Delete</button>
     <router-link 
-    to="/"
-    class="btn btn-info"
-  >Show</router-link>
+      :to="{ path: 'view/' + content.id }"
+      class="btn btn-info"
+    >Show</router-link>
   </td>
 </tr>
 </template>
