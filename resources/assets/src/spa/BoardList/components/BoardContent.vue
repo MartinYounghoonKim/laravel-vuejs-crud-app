@@ -26,8 +26,11 @@ export default {
   },
   methods: {
     deleteContent () {
-      const targetId = this.content.id;
+      const wantDelete = confirm('Are you sure?');
 
+      if(wantDelete === false) return false;
+
+      const targetId = this.content.id;
       this.$emit('deleteContent', { targetId });
     }
   }

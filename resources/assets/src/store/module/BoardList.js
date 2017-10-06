@@ -19,14 +19,6 @@ const actions = {
     .then( res=> {
       commit('setContentsData', res.data.students );
     })
-  },
-  deleteContent ( {commit}, payload){
-    const targetId = payload.targetId;
-
-    getApi.delete(`/students/${targetId}`)
-    .then( res=> {
-      commit('deleteContent', targetId );
-    })
   }
 }
 
