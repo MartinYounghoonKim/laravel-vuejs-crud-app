@@ -8,6 +8,12 @@ const actions = {
     .then( res=> {
       commit('deleteContent', targetId );
     })
+  },
+  getStudentData ({ commit }, targetId) {
+    getApi.get(`/students/${targetId}`)
+    .then( res => {
+      commit('setStudentData', res.data);
+    })
   }
 }
 
