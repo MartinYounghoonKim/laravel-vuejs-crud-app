@@ -3,6 +3,7 @@
   <label for="exampleInputEmail1">Email address</label>
   <input
     @blur="writeUserEmail"
+    :value="email"
     type="email" 
     class="form-control" 
     id="exampleInputEmail1" 
@@ -16,6 +17,9 @@
 <script>
 export default {
   name: 'email-form',
+  props:{
+    'email': String
+  },
   methods: {
     writeUserEmail (e) {
       const userEmail = e.target.value;

@@ -2,27 +2,29 @@
 <div>
   <name-form
     @writeUserName="writeUserName"
+    :name="student.name"
   ></name-form>
   <birthday-form
     @writeUserBirthday="writeUserBirthday"
+    :birthday="student.birth_date"
   ></birthday-form>
   <email-form
     @writeUserEmail="writeUserEmail"
+    :email="student.email"
   ></email-form>
-  <button-container
-    @completedWrite="completedWrite"
-  ></button-container>
 </div>
 
 </template>
 <script>
-import ButtonContainer from './components/ButtonContainer';
 import BirthdayForm from './components/BirthdayForm';
 import EmailForm from './components/EmailForm';
 import NameForm from './components/NameForm';
 
 export default {
   name: 'board-write',
+  props: {
+    'student': Object
+  },
   methods: {
     writeUserName(userName){
       this.$store.dispatch('writeUserName', { userName });
@@ -32,13 +34,9 @@ export default {
     },
     writeUserEmail(userEmail){
       this.$store.dispatch('writeUserEmail', { userEmail });
-    },
-    completedWrite () {
-      this.$store.dispatch('completedWrite');
     }
   },
   components: {
-    ButtonContainer,
     BirthdayForm,
     EmailForm,
     NameForm
