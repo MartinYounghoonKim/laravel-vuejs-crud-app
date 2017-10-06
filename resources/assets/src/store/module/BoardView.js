@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import router from '../../router';
+
 import getApi from '../../api/api_core.js';
 
 const state = {
@@ -8,9 +10,7 @@ const state = {
 }
 
 const getters = {
-  getStudentData (state) {
-    return state.student;
-  }
+  getStudentData: state => state.student
 }
 const actions = {
   getStudentData ({ commit }, targetId) {
@@ -24,6 +24,9 @@ const actions = {
 const mutations = {
   setStudentData (state, payload) {
     state.student = payload;
+  },
+  deleteContent(state) {
+    router.push('/');
   }
 }
 
