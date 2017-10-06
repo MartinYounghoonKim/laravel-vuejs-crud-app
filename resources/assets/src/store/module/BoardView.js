@@ -13,12 +13,7 @@ const getters = {
   getStudentData: state => state.student
 }
 const actions = {
-  getStudentData ({ commit }, targetId) {
-    getApi.get(`/students/${targetId}`)
-    .then( res => {
-      commit('setStudentData', res.data);
-    })
-  }
+  
 }
 
 const mutations = {
