@@ -48,6 +48,30 @@ const actions = {
         router.push('/');
       }
     });
+  },
+  editData ( {commit}, payload ) {
+    const id = payload.id;
+
+    const {
+      birthday,
+      email,
+      name
+    } = state;
+
+
+    getApi.put(`/students/${id}`, {
+      birthday,
+      email,
+      name
+    })
+    .then( res=>{
+      if(res.status === 201) {
+
+        //Success create board data
+        alert("Success create your data.");
+        router.push('/');
+      }
+    });
   }
 }
 
