@@ -5,7 +5,10 @@
   <td>{{ content.birth_date }}</td>
   <td>{{ content.email }}</td>
   <td>
-    <button type="button" class="btn btn-primary">Edit</button>
+    <router-link
+      :to="{path: 'edit/' + content.id }"
+      class="btn btn-primary"
+    >Edit</router-link>
     <button 
       @click="deleteContent"
       type="button" 
