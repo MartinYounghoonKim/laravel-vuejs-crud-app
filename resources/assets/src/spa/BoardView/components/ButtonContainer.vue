@@ -1,6 +1,7 @@
 <template>
 <div class="button-wrapper">
   <button 
+    @click="deleteContent"
     type="button" 
     class="btn btn-danger"
   >Delete
@@ -12,7 +13,21 @@
 
 <script>
 export default {
-  name: "button-wrapper"
+  name: "button-wrapper",
+  props: {
+    targetId: Number
+  },
+  methods: {
+    deleteContent(){
+      const wantDelete = confirm('Are you sure?');
+
+      if(wantDelete === false) return false;
+
+      const targetId = this.targetId;
+
+      this.$emit('deleteContent', { targetId });
+    }
+  }
 }
 </script>
 

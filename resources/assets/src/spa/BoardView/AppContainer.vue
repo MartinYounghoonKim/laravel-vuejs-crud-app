@@ -14,7 +14,10 @@
       <dd>{{ student.birth_date }}</dd>
     </dl>
   </div>
-  <button-container></button-container>
+  <button-container
+    :targetId="student.id"
+    @deleteContent="deleteContent"
+  ></button-container>
 </div>  
 </template>
 
@@ -35,6 +38,9 @@ export default {
     this.$store.dispatch('getStudentData', targetId);
   },
   methods: {
+    deleteContent(targetId){
+      this.$store.dispatch('deleteContent', targetId);
+    }
   },
   components: {
     ButtonContainer
