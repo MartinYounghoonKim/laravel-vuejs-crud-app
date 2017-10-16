@@ -1,13 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-// import getters from './getters.js';
-import mutations from './mutations.js';
-import actions from './actions.js';
-
-import BoardList from './module/BoardList.js';
-import Write from './module/Write.js';
-import BoardView from './module/BoardView.js';
+import { BoardStoreModule } from './module/Board';
 
 Vue.use(Vuex);
 
@@ -19,11 +13,7 @@ const myPlugin = store => {
 
 export const store = new Vuex.Store({
     plugins: [myPlugin],
-    mutations,
-    actions,
     modules: {
-        BoardList,
-        Write,
-        BoardView
+        BoardStoreModule
     }
 });
