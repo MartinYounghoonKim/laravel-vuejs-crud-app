@@ -1,30 +1,41 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import BoardList from '../spa/BoardList/AppContainer';
-import BoardWrite from '../spa/BoardWrite/AppContainer';
-import BoardView from '../spa/BoardView/AppContainer';
-import BoardEdit from '../spa/BoardEdit/AppContainer';
+import StudentsBoardAppContainer from '../spa/StudentsBoard/AppContainer.vue';
+import StudentsBoardList from '../spa/StudentsBoard/components/List.vue';
+import StudentsBoardCreate from '../spa/StudentsBoard/components/Create.vue';
+import StudentBoardView from '../spa/StudentsBoard/components/View.vue';
+import StudentBoardEdit from '../spa/StudentsBoard/components/Edit.vue';
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
   routes: [{
-    path: '/',
+    path: '/board/list',
     name: 'BoardList',
-    component: BoardList
+    components:{
+      header: StudentsBoardAppContainer,
+      contents: StudentsBoardList
+    }
   },{
-    path: '/write',
-    name: 'BoardWrite',
-    component: BoardWrite
+    path: '/board/create',
+    name: 'BoardCreate',
+    components:{
+      contents: StudentsBoardCreate
+    }
   },{
-    path: '/view/:id',
+    path: '/board/view/:id',
     name: 'BoardView',
-    component: BoardView
+    components:{
+      contents: StudentBoardView
+    }
   },{
-    path: '/edit/:id',
-    name: 'BoardEdit',
-    component: BoardEdit
+    path: '/board/edit/:id',
+    name: 'BoardView',
+    components:{
+      header: StudentsBoardAppContainer,
+      contents: StudentBoardEdit
+    }
   }]
 })

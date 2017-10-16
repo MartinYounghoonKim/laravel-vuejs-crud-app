@@ -1,18 +1,14 @@
 <template>
 <div id="app">
-  <app-header></app-header>
-  <router-view></router-view>
+  <router-view name="header"></router-view>
+  <router-view name="contents"></router-view>
 </div>
 </template>
 
 <script>
-import AppHeader from './common/AppHeader';
 
 export default {
-  name: 'app',
-  components: {
-    AppHeader
-  }
+  name: 'app'
 }
 </script>
 
