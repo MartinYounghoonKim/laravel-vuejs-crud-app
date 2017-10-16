@@ -81,7 +81,7 @@ class StudentsController extends Controller
 	public function update(Request $request, $id)
 	{
     $name = $request->input('name');
-		$birthday = $request->input('birthday');
+		$birthday = $request->input('birth_date');
     $email = $request->input('email');
     
     DB::table('students')
